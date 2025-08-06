@@ -98,8 +98,10 @@ function App() {
           onClick={() => handleToggleSection('taskList')}
         >+</button>
         <div className="sort-controls">
-          <button className="sort-button" onClick={() => toggleSort('date')}>By Date</button>
-          <button className="sort-button" onClick={() => toggleSort('priority')}>By Priority</button>
+          <button className="sort-button" onClick={() => toggleSort('date')}>
+            By Date {sortType === 'date' && (sortOrder === 'asc' ? "\u2191" : "\u2193")}</button>
+          <button className="sort-button" onClick={() => toggleSort('priority')}>
+            By Priority {sortType === 'priority' && (sortOrder === 'asc' ? "\u2191" : "\u2193")}</button>
         </div>
         {openSections.taskList && <TaskList
           tasks={activeTask}

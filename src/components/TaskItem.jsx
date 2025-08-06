@@ -25,14 +25,14 @@ const TaskItem = (props) => {
         <div className="task-deadline">Due: {new Date(taskDeadline).toLocaleString()}</div>
       </div>
       <div className="task-buttons">
-        <button className="complete-button" onClick={() => completedTask(id)}>
-          Complete
-        </button>
         {!completed && (
-          <button className="delete-button" onClick={() => deleteTask(id)}>
-            Delete
+          <button className="complete-button" onClick={() => completedTask(id)}>
+            Complete
           </button>
         )}
+        <button className="delete-button" onClick={() => deleteTask(id)}>
+          Delete
+        </button>
       </div>
     </li>
   )
