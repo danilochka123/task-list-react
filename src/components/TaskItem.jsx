@@ -26,9 +26,15 @@ const TaskItem = (props) => {
       </div>
       <div className="task-buttons">
         {!completed && (
+<<<<<<< HEAD
           <button className="complete-button" onClick={() => completedTask(id)}>
             Complete
           </button>
+=======
+        <button className="complete-button" onClick={() => completedTask(id)}>
+          Complete
+        </button>
+>>>>>>> 75c259813cf1fa25fc70618ae195d8f620c640d6
         )}
         <button className="delete-button" onClick={() => deleteTask(id)}>
           Delete
