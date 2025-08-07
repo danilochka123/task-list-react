@@ -8,7 +8,8 @@ const TaskItem = (props) => {
     id,
     completed,
     deleteTask,
-    completedTask
+    completedTask,
+    overdue,
   } = props
 
   return (
@@ -16,7 +17,8 @@ const TaskItem = (props) => {
       'low' : taskPriority === 'Low',
       'medium' : taskPriority === 'Medium',
       'high' : taskPriority === 'High',
-      'completed' : completed === true
+      'completed' : completed === true,
+      'overdue' : overdue === true
     })}>
       <div className="task-info">
         <div>

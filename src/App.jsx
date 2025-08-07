@@ -25,6 +25,24 @@ function App() {
     localStorage.setItem('tasks', JSON.stringify(tasks))
   }, [tasks]);
 
+  useEffect(() =>{
+    const timer = setInterval(() => {
+      setTasks(tasks =>
+        tasks.map((task) => {
+          const overdue = new Date(task.taskDeadline) < new Date();
+            return {
+              ...task,
+              overdue,
+            }
+        })
+      )
+    }, 1000 * 30)
+
+    return () => {
+      clearInterval(timer)
+    }
+  }, [])
+
   const handleToggleSection = (section) => {
     setOpenSections((currentSections) => ({
       ...currentSections,
@@ -33,7 +51,7 @@ function App() {
   }
 
   function addTask(newTask) {
-    setTasks(currentTasks => [...currentTasks, {...newTask, completed: false, id: Date.now()}])
+    setTasks(currentTasks => [...currentTasks, {...newTask, completed: false, id: Date.now(), overdue: false}])
   }
 
   function deleteTask(id) {
