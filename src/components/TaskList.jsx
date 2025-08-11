@@ -1,6 +1,6 @@
 import TaskItem from "./TaskItem.jsx";
 import {useContext} from "react";
-import {MyContext} from "../App.jsx";
+import MyContext from "./MyContext.jsx";
 
 const TaskList = () => {
   const {activeTask, deleteTask, completedTask} = useContext(MyContext)
