@@ -5,8 +5,12 @@ import Footer from "./components/Footer.jsx";
 import {useState} from "react";
 import classNames from "classnames";
 import {useEffect} from "react";
+import {createContext} from "react";
+
+export const MyContext = createContext()
 
 function App() {
+
   const [openSections, setOpenSections] = useState({
     taskForm: true,
     taskList: true,
@@ -95,6 +99,8 @@ function App() {
   const completedTasks = sortTasks(tasks.filter((task) => task.completed))
 
   return (
+    <MyContext.Provider value={{activeTask, deleteTask, completedTasks, completedTask}}>
+
     <div className='app'>
       <div className="task-container">
         <h1>Task List with Priority</h1>
@@ -121,11 +127,7 @@ function App() {
           <button className="sort-button" onClick={() => toggleSort('priority')}>
             By Priority {sortType === 'priority' && (sortOrder === 'asc' ? "\u2191" : "\u2193")}</button>
         </div>
-        {openSections.taskList && <TaskList
-          tasks={activeTask}
-          deleteTask={deleteTask}
-          completedTask={completedTask}
-        />}
+        {openSections.taskList && <TaskList/>}
       </div>
 
       <div className="completed-task-container">
@@ -136,11 +138,11 @@ function App() {
           })}
           onClick={() => handleToggleSection('taskCompletedList')}
         >+</button>
-        {openSections.taskCompletedList && <CompletedTaskList tasks={completedTasks} deleteTask={deleteTask}/>}
+        {openSections.taskCompletedList && <CompletedTaskList/>}
       </div>
-
       <Footer />
     </div>
+    </MyContext.Provider>
   );
 }
 

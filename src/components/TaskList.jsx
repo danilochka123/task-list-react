@@ -1,15 +1,13 @@
 import TaskItem from "./TaskItem.jsx";
+import {useContext} from "react";
+import {MyContext} from "../App.jsx";
 
-const TaskList = (props) => {
-  const {
-    tasks,
-    deleteTask,
-    completedTask
-  } = props
+const TaskList = () => {
+  const {activeTask, deleteTask, completedTask} = useContext(MyContext)
 
   return (
     <ul className="task-list">
-      {tasks.map((task) => (
+      {activeTask.map((task) => (
         <TaskItem
           {...task}
           key={task.taskDeadline}
